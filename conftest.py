@@ -17,7 +17,7 @@ def browser(request, url):
     """ Фикстура инициализации браузера """
     browser = request.config.getoption("--browser")
     if browser == "chrome":
-        driver = webdriver.Chrome()
+        driver = webdriver.Chrome(executable_path=f"/home/user/Downloads/chromedriver")
     elif browser == "firefox":
         driver = webdriver.Firefox()
     elif browser == "safari":
