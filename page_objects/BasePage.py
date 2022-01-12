@@ -22,6 +22,7 @@ class BasePage:
         return self.driver.find_elements(by, selector)[index]
 
     def _click(self, selector, index=0):
+        WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable(self.__element(selector, index)))
         ActionChains(self.driver).move_to_element(self.__element(selector, index)).click().perform()
 
     def _input(self, selector, value, index=0):
@@ -29,9 +30,11 @@ class BasePage:
         element.clear()
         element.send_keys(value)
 
-    def _wait_for_visible(self, selector, link_text=None, index=0, wait=3):
+    def _wait_for_visible(self, selector, link_text=None, index=0, wait=10):
         return WebDriverWait(self.driver, wait).until(EC.visibility_of(self.__element(selector, index, link_text)))
 
     def _get_element_text(self, selector, index):
         return self.__element(selector, index).text
 
+    def _wait_for_visibility_of_el_located(self, selector, link_text=None, index=0, wait=10):
+        return WebDriverWait(self.driver, wait).until(EC.visibility_of_any_elements_located(self.__element(selector, index, link_text)))

@@ -1,3 +1,5 @@
+import time
+
 from locators import HeaderLocators
 
 class Header:
@@ -6,6 +8,7 @@ class Header:
         self.driver = driver
 
     def go_to_cart(self):
+        time.sleep(5)
         self.driver.find_element_by_css_selector(HeaderLocators.card['css']).click()
 
     def go_to_wishlist(self):

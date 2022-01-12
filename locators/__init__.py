@@ -1,4 +1,4 @@
-from .CountryAlert import CountryAlert
+from .CountryAlertLocators import CountryAlertLocators
 from .ProductPageLocators import ProductPageLocators
 from .MainPageLocators import MainPageLocators
 from .HeaderLocators import HeaderLocators

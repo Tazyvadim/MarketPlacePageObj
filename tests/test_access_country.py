@@ -1,6 +1,6 @@
 import time
-from page_objects import CountryAlertPage, MainPage, ProductPage, LoginAlertPage, CheckoutPage
-from page_objects.common import Header
+from page_objects import MainPage, ProductPage, CheckoutPage, LoginAlertPage
+from page_objects.common import Header, CountryAlert
 from page_objects.common import SiteBar
 import json
 
@@ -11,17 +11,14 @@ with open('passw_data.json', 'r') as file:
 
 
 def test_access_country(browser):
-    CountryAlertPage(browser).wait_element()
-    CountryAlertPage(browser).access_country()
+    # CountryAlertPage(browser).wait_element()
+    title = CountryAlert(browser).get_title(1)
+    CountryAlert(browser).access_country(title, 1)
     MainPage(browser).select_product(2)
     ProductPage(browser).add_to_cart()
-    time.sleep(5)
     Header(browser).go_to_cart()
-    time.sleep(5)
     SiteBar(browser).go_to_checkout()
-    time.sleep(5)
     LoginAlertPage(browser).login_user(email=login, password=password)
-    time.sleep(5)
     CheckoutPage(browser).select_country(1)
-    CheckoutPage(browser).select_delivery_method(3)
-    time.sleep(5)
+    CheckoutPage(browser).select_first_delivery_method(1)
+    CheckoutPage(browser).vipvip_button()
