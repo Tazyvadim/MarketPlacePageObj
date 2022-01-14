@@ -1,5 +1,4 @@
 import time
-
 from locators import CheckoutLocators
 from .BasePage import BasePage
 from selenium.webdriver.support import expected_conditions as EC
@@ -26,3 +25,7 @@ class CheckoutPage(BasePage):
     def vipvip_button(self):
         self._wait_for_visible(CheckoutLocators.vipvip_button)
         self._click(CheckoutLocators.vipvip_button)
+
+    def get_product_name(self):
+        time.sleep(5)
+        self._get_element_text(CheckoutLocators.product_name)

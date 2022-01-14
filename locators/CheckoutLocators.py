@@ -7,3 +7,4 @@ class CheckoutLocators:
     third_delivery_method = {
         'css': '#showroom-list > li.showroom.selected-item > div > table > tbody > tr:nth-child(3) > td.bpt-radio'}
     vipvip_button = {'css': '#opc-sidebar > div.actions-toolbar > div > button'}
+    product_name = {'css': 'div.product-item-name-block > strong > a'}
